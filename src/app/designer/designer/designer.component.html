@@ -1,0 +1,58 @@
+<!-- <section class="mat-typography"> -->
+
+<mat-card class="container">
+  <mat-card-header>
+
+    <form [formGroup]="drawForm" ng-init="formDir.resetForm()" (ngSubmit)="onSubmit(drawForm)" novalidate padding>
+
+      <div class="row">
+
+        <mat-form-field class="col-md-4 col-lg-2">
+          <input matInput placeholder="Add your text" formControlName="text">
+        </mat-form-field>
+
+        <mat-form-field class="col-md-4 col-lg-2">
+          <mat-select placeholder="Select font" formControlName="fontFamily">
+            <mat-option *ngFor="let font of fonts" [ngStyle]="{ 'font-family': font.value }" [value]="font.value">
+              {{ font.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-3 col-lg-2">
+          <span matPrefix>#</span>
+          <input matInput placeholder="Set color (HEX)" formControlName="fontColor">
+          <mat-hint>e.g - FF0000 (red)</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="col-md-2 col-lg-1">
+          <input matInput placeholder="X position" formControlName="xPosition">
+        </mat-form-field>
+
+        <mat-form-field class="col-md-2 col-lg-1">
+          <input matInput placeholder="Y position" formControlName="yPosition">
+        </mat-form-field>
+
+        <mat-form-field class="col-md-3 col-lg-2">
+          <input matInput type="number" placeholder="Font size (px)" formControlName="fontSize" min="10">
+          <mat-error *ngIf="drawForm.get('fontSize')?.invalid">Min size: 10px</mat-error>
+        </mat-form-field>
+
+        <button mat-stroked-button class="col-md-3 col-lg-2" type="submit">Submit</button>
+
+      </div>
+
+    </form>
+
+  </mat-card-header>
+
+  <mat-card-content>
+
+    <app-canvas-board class="d-flex justify-content-center d-inline-block" [drawData]="formData$ | async" (draw)="onDrawAction($event)"
+      (download)="onDownloadAction($event)" (undo)="onUndoAction($event)" (redo)="onRedoAction($event)"></app-canvas-board>
+
+  </mat-card-content>
+
+</mat-card>
+
+<!-- </section> -->
