@@ -19,26 +19,30 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field class="col-md-3 col-lg-2">
+        <mat-form-field class="col-md-2 col-lg-2">
           <span matPrefix>#</span>
-          <input matInput placeholder="Set color (HEX)" formControlName="fontColor">
+          <input matInput placeholder="Color (HEX)" formControlName="fontColor">
           <mat-hint>e.g - FF0000 (red)</mat-hint>
         </mat-form-field>
 
         <mat-form-field class="col-md-2 col-lg-1">
-          <input matInput placeholder="X position" formControlName="xPosition">
+          <input matInput placeholder="X position" type="number" formControlName="xPosition">
         </mat-form-field>
 
         <mat-form-field class="col-md-2 col-lg-1">
-          <input matInput placeholder="Y position" formControlName="yPosition">
+          <input matInput placeholder="Y position" type="number" formControlName="yPosition">
         </mat-form-field>
 
-        <mat-form-field class="col-md-3 col-lg-2">
+        <mat-form-field class="col-md-2 col-lg-1">
           <input matInput type="number" placeholder="Font size (px)" formControlName="fontSize" min="10">
           <mat-error *ngIf="drawForm.get('fontSize')?.invalid">Min size: 10px</mat-error>
         </mat-form-field>
 
-        <button mat-stroked-button class="col-md-3 col-lg-2" type="submit">Submit</button>
+        <mat-form-field class="col-md-2 col-lg-2">
+          <input matInput type="number" placeholder="Letter Spacing (px)" formControlName="letterSpacing" min="0">
+        </mat-form-field>
+
+        <button mat-stroked-button class="col-md-3 col-lg-1" type="submit">Submit</button>
 
       </div>
 

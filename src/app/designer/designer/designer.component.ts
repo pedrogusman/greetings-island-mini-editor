@@ -6,7 +6,6 @@ import { Store } from '@ngrx/store';
 import { IAppState } from '../../reducers';
 import * as fromDesigner from './../store';
 
-
 @Component({
   selector: 'app-designer',
   templateUrl: './designer.component.html',
@@ -39,6 +38,7 @@ export class DesignerComponent implements OnInit {
       fontFamily: ['', [Validators.required]],
       fontColor: ['', [Validators.required]],
       fontSize: [16, [Validators.required, Validators.min(10)]],
+      letterSpacing: [0, [Validators.required]],
       xPosition: [0, [Validators.required]],
       yPosition: [0, [Validators.required]]
     });
@@ -46,7 +46,7 @@ export class DesignerComponent implements OnInit {
 
   onSubmit(form) {
     if (form.valid) {
-      const fromData: IDrawData = form.value;
+      const fromData: IDrawData = form.value as IDrawData;
 
       // 2. Dispatch draw action
       this.store.dispatch(new fromDesigner.UpdateForm(fromData));

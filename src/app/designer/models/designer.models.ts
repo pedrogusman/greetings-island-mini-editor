@@ -5,4 +5,5 @@ export interface IDrawData {
   fontSize: string;
   xPosition: number;
   yPosition: number;
+  letterSpacing: number;
 }

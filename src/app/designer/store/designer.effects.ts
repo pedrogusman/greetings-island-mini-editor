@@ -28,7 +28,8 @@ export class DesignerEffects {
             fontFamily,
             fontColor,
             xPosition,
-            yPosition
+            yPosition,
+            letterSpacing = 0
           }
         } = data;
 
@@ -44,7 +45,8 @@ export class DesignerEffects {
           ctx.fillStyle = `#${fontColor}`;
 
           // text and position
-          ctx.fillText(text, xPosition, yPosition);
+          // ctx.fillText(text, xPosition, yPosition);
+          ctx['renderText'](text, xPosition, yPosition, letterSpacing);
         }
       })
     );
